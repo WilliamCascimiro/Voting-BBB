@@ -22,13 +22,13 @@ jobs:
       run: dotnet restore voting-api
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build voting-api --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release
+      run: dotnet test voting-api --no-build --verbosity normal --configuration Release
 
     - name: Publish application
-      run: dotnet publish --configuration Release --output ./publish
+      run: dotnet publish voting-api --configuration Release --output ./publish
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
