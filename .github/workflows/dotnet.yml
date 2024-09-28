@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -26,7 +27,18 @@ jobs:
       run: dotnet build voting-api --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test voting-api --no-build --verbosity normal --configuration Release
+      run: dotnet test voting-api --no-build --collect:"XPlat Code Coverage" --results-directory ./TestResults
+
+    - name: Report code coverage to SonarCloud
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        dotnet tool install --global dotnet-sonarscanner
+        export PATH="$PATH:~/.dotnet/tools"
+        dotnet sonarscanner begin /k:"WilliamCascimiro_Voting-BBB" /o:"williamcascimiro" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="./TestResults/**/coverage.opencover.xml"
+        dotnet build --no-incremental
+        dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     - name: Publish application
       run: dotnet publish voting-api --configuration Release --output ./publish
