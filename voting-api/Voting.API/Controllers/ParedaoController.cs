@@ -42,7 +42,7 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
@@ -65,7 +65,7 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
@@ -75,10 +75,7 @@ namespace Voting.API.Controllers
         public async Task<IActionResult> CreateQueueAsync([FromBody] CreateVoteRequest createVoteRequest)
         {
             bool sucess;
-            string messagemResult;
             var idRastreio = Guid.NewGuid();
-            var clientIp = HttpContext.Connection.RemoteIpAddress?.ToString();
-            var clientIpOriginal = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             Stopwatch stopwatch = Stopwatch.StartNew();
 
             try
@@ -132,7 +129,7 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
@@ -140,7 +137,7 @@ namespace Voting.API.Controllers
 
 
 
-        public async Task<bool> CanVoteAsync(string userId)
+        private async Task<bool> CanVoteAsync(string userId)
         {
             string cacheKey = $"VoteCount_{userId}";
 
