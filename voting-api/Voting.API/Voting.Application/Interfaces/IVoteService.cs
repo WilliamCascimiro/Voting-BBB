@@ -9,5 +9,6 @@ namespace Voting.Application.Services
         bool Create(CreateVoteRequest reserva);
         bool Queue(CreateVoteRequest reserva);
         Task<bool> QueueAsync(CreateVoteRequest reserva);
+        Task<bool> CanVoteAsync(string userId);
     }
 }
