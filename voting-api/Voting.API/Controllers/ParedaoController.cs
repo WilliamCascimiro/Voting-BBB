@@ -82,7 +82,7 @@ namespace Voting.API.Controllers
             {    
                 _logger.LogError($"[INFO] - Inicio processo {idRastreio}");
 
-                var canVote = await CanVoteAsync(createVoteRequest.userId.ToString());
+                var canVote = await _voteService.CanVoteAsync(createVoteRequest.userId.ToString());
 
                 if (canVote)
                 {
@@ -134,31 +134,5 @@ namespace Voting.API.Controllers
 
             return Ok();
         }
-
-
-
-        private async Task<bool> CanVoteAsync(string userId)
-        {
-            string cacheKey = $"VoteCount_{userId}";
-
-            var voteCountString = await _cache.GetStringAsync(cacheKey);
-            int voteCount = voteCountString != null ? int.Parse(voteCountString) : 0;
-
-            if (voteCount >= VoteLimitPerMinute)
-            {
-                return false;
-            }
-
-            voteCount++;
-
-            // Atualize o cache com a nova contagem e defina o tempo de expiração para 1 minuto
-            await _cache.SetStringAsync(cacheKey, voteCount.ToString(), new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1)
-            });
-
-            return true;
-        }
-
     }
 }
