@@ -1,0 +1,32 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore voting-api
+      
+    - name: Build
+      run: dotnet build voting-api --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test voting-api --no-build --verbosity normal --configuration Release
+
+    - name: Publish application
+      run: dotnet publish voting-api --configuration Release --output ./publish
