@@ -38,12 +38,12 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar-scanner
       
       - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        #if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-          dotnet tool install --global dotnet-coverage --tool-path .\.coverage
+          dotnet tool install --global dotnet-coverage
 
       - name: Add dotnet tools to PATH
         shell: powershell
@@ -58,6 +58,6 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"WilliamCascimiro_Voting-BBB" /o:"williamcascimiro" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet build voting-api
-          .\.coverage\dotnet-coverage collect "dotnet test voting-api" -f xml -o "coverage.xml"
+          dotnet build --no-incremental voting-api
+          dotnet-coverage collect "dotnet test voting-api" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
