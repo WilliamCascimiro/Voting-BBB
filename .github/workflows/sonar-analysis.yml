@@ -43,7 +43,13 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global dotnet-coverage --tool-path .\.coverage
+
+      - name: Add dotnet tools to PATH
+        shell: powershell
+        run: |
+          $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
+          echo "PATH is now: $env:PATH"
       
       - name: Build and analyze
         env:
@@ -53,5 +59,5 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"WilliamCascimiro_Voting-BBB" /o:"williamcascimiro" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet build voting-api
-          dotnet-coverage collect "dotnet test voting-api" -f xml -o "coverage.xml"
+          .\.coverage\dotnet-coverage collect "dotnet test voting-api" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
