@@ -1,0 +1,14 @@
+﻿C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\Application\Services\VoteServiceTest.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\BookingServiceTests.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\BookingServiceTest_Real.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\Cache\VoteCacheTests.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\Controllers\ParedaoControllerTests.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\DatabaseFixture.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\GlobalUsings.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.Tests\UnitTest1.cs
+C:\Users\William Cascimiro\.nuget\packages\microsoft.net.test.sdk\17.6.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\William Cascimiro\.nuget\packages\microsoft.testplatform.testhost\17.6.0\build\netcoreapp3.1\x64\testhost.exe
+C:\Users\William Cascimiro\.nuget\packages\microsoft.testplatform.testhost\17.6.0\build\netcoreapp3.1\x64\testhost.dll
+C:\Users\William Cascimiro\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\William Cascimiro\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\William Cascimiro\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll

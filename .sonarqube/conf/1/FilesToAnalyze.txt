@@ -1,0 +1,14 @@
+﻿C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Application\Consumer.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Application\Producer.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\DTOs\VoteRequest.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Program.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Worker.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\obj\Debug\net8.0\Voting.FraudPreventionWorker.GlobalUsings.g.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\obj\Debug\net8.0\Voting.FraudPreventionWorker.AssemblyInfo.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\appsettings.Development.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\appsettings.Docker.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\appsettings.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Dockerfile
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting.FraudPreventionWorker\Properties\launchSettings.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\.dockerignore

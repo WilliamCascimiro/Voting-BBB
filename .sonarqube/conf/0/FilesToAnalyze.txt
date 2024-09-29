@@ -1,0 +1,11 @@
+﻿C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\DTOs\VoteRequest.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\Program.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\Worker.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\obj\Debug\net8.0\Voting-Consumer.GlobalUsings.g.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\obj\Debug\net8.0\Voting-Consumer.AssemblyInfo.cs
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\appsettings.Development.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\appsettings.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\Dockerfile
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\Voting-Consumer\Properties\launchSettings.json
+C:\Users\William Cascimiro\Desktop\Projetos\Votação BBB\voting-api\.dockerignore
