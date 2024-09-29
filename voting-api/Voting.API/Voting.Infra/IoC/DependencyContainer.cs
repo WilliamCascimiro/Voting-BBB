@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Voting.Infra.Queue;
 using Voting.API.Voting.Infra.DataBase.Context;
 using Voting.API.Voting.Infra.DataBase.Repositories;
+using Voting.API.Voting.Infra.Redis.Cache;
 
 namespace Voting.Infra.IoC
 {
@@ -14,6 +15,7 @@ namespace Voting.Infra.IoC
             services.AddDependencyInjectionRepository();
             services.AddDependencyInjectionService();
             services.AddAutoMapperConfig();
+            services.AddDependencyInjectionCache();
             services.AddContext(configuration);
 
             return services;
@@ -26,6 +28,12 @@ namespace Voting.Infra.IoC
 
             services.AddSingleton<IRabbitMqProducer, Producer>();
 
+            return services;
+        }
+
+        private static IServiceCollection AddDependencyInjectionCache(this IServiceCollection services)
+        {
+            services.AddScoped<IVoteCache, VoteCache>();
             return services;
         }
 

@@ -3,20 +3,24 @@ using Voting.Domain.Interfaces;
 using Voting.Infra.Queue;
 using Newtonsoft.Json;
 using Voting.API.Domain.Entities;
+using Voting.API.Voting.Infra.Redis.Cache;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace Voting.Application.Services
 {
     public class VoteService : IVoteService
     {
         private readonly IVoteRepository _voteRepository;
+        private readonly IVoteCache _voteCache;
         private readonly ILogger<VoteService> _logger;
         private readonly IRabbitMqProducer _rabbitMqProducer;
 
-        public VoteService(IVoteRepository voteRepository, ILogger<VoteService> logger, IRabbitMqProducer rabbitMqProducer)
+        public VoteService(IVoteRepository voteRepository, ILogger<VoteService> logger, IRabbitMqProducer rabbitMqProducer, IVoteCache voteCache)
         {
             _voteRepository = voteRepository;
             _logger = logger;
             _rabbitMqProducer = rabbitMqProducer;
+            _voteCache = voteCache;
         }
 
         public async Task<bool> CreateAsync(CreateVoteRequest createVoteRequest)
@@ -95,5 +99,11 @@ namespace Voting.Application.Services
             }
         }
 
+        public async Task<bool> CanVoteAsync(string userId)
+        {
+            var can = await _voteCache.CanVoteAsync(userId);
+
+            return can;
+        }
     }
 }

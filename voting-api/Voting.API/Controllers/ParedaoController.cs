@@ -42,7 +42,7 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
@@ -65,7 +65,7 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
@@ -75,17 +75,14 @@ namespace Voting.API.Controllers
         public async Task<IActionResult> CreateQueueAsync([FromBody] CreateVoteRequest createVoteRequest)
         {
             bool sucess;
-            string messagemResult;
             var idRastreio = Guid.NewGuid();
-            var clientIp = HttpContext.Connection.RemoteIpAddress?.ToString();
-            var clientIpOriginal = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             Stopwatch stopwatch = Stopwatch.StartNew();
 
             try
             {    
                 _logger.LogError($"[INFO] - Inicio processo {idRastreio}");
 
-                var canVote = await CanVoteAsync(createVoteRequest.userId.ToString());
+                var canVote = await _voteService.CanVoteAsync(createVoteRequest.userId.ToString());
 
                 if (canVote)
                 {
@@ -132,36 +129,10 @@ namespace Voting.API.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"[ERRO] - {ex.Message}");
             }
 
             return Ok();
         }
-
-
-
-        public async Task<bool> CanVoteAsync(string userId)
-        {
-            string cacheKey = $"VoteCount_{userId}";
-
-            var voteCountString = await _cache.GetStringAsync(cacheKey);
-            int voteCount = voteCountString != null ? int.Parse(voteCountString) : 0;
-
-            if (voteCount >= VoteLimitPerMinute)
-            {
-                return false;
-            }
-
-            voteCount++;
-
-            // Atualize o cache com a nova contagem e defina o tempo de expiração para 1 minuto
-            await _cache.SetStringAsync(cacheKey, voteCount.ToString(), new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1)
-            });
-
-            return true;
-        }
-
     }
 }
