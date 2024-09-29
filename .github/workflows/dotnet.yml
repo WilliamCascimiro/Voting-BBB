@@ -27,7 +27,7 @@ jobs:
       run: dotnet build voting-api --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test voting-api --no-build
+      run: dotnet test voting-api --no-build --verbosity normal --configuration Release
 
     - name: Publish application
       run: dotnet publish voting-api --configuration Release --output ./publish
