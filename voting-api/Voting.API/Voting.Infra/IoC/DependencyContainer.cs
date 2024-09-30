@@ -47,6 +47,7 @@ namespace Voting.Infra.IoC
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
+
         }
 
         private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration)
