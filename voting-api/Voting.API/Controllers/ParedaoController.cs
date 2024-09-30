@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.Extensions.Caching.Distributed;
+using Serilog;
 
 namespace Voting.API.Controllers
 {
@@ -32,6 +33,8 @@ namespace Voting.API.Controllers
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 var idRastreio = Guid.NewGuid();
                 _logger.LogInformation(idRastreio + " - inicio processo");
+
+                //Log.Error("");
 
                 var sucess = await _voteService.CreateAsync(createVoteRequest);
                 _logger.LogInformation(idRastreio + " - fim processo");

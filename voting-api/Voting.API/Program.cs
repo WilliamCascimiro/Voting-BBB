@@ -1,3 +1,5 @@
+using Serilog;
+using Serilog.Events;
 using Voting.API.Middlewares;
 using Voting.Infra.IoC;
 
@@ -8,6 +10,13 @@ namespace Voting.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //builder.Host.UseSerilog((ctx, lc) => lc
+            //    .WriteTo.Console(LogEventLevel.Debug)
+            //    .WriteTo.File("log.txt",
+            //        LogEventLevel.Warning,
+            //    rollingInterval: RollingInterval.Day));
+
 
             builder.WebHost.ConfigureKestrel(serverOptions =>
             {
